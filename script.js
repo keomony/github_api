@@ -4,7 +4,6 @@ $(document).ready(function() {
       var input = $(this);
       var username = input.val();
       getGithubInfo(username);
-      // console.log('username was:' +username);
     }
   });
 });
@@ -16,7 +15,15 @@ function getGithubInfo(username) {
   xmlhttp.open('GET', url, false);
   xmlhttp.send();
 
-  var data = xmlhttp.responseText;
+  return xmlhttp;
+}
 
-  console.log(data);
+function showUser(xmlhttp){
+  if(xmlhttp.status ===200) {
+    //show the user details
+    var json = xmlhttp.responseText;
+    var user = JSON.parse(json);
+  } else {
+    //show an error
+  }
 }
